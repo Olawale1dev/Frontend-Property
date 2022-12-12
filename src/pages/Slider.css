@@ -1,0 +1,58 @@
+.slider-second-lay{
+    background-color:violet;
+    position: absolute;
+		width: 100%;
+		height: 100%;
+}
+.sliderSell-second-lay{
+    background-color:rgb(130, 195, 238);
+    position: absolute;
+		width: 100%;
+		height: 100%;
+}
+.sliderFurnished-second-lay{
+    background-color:rgb(130, 238, 188);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.sliderNewlyBuilt-second-lay{
+    background-color:rgb(225, 130, 238);
+    position: absolute;
+    width: 100%;
+    height: 100%; 
+}
+.sliderShortLet-second-lay{
+    background-color:rgb(65, 6, 73);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white; 
+}
+
+.slider-shortLink{
+    background-color: blue;
+    color: white;
+    padding: 2px;
+    position:absolute;
+    width: 30%;
+    margin-top: 17px;
+}
+.slider-shortDetail{
+    margin-top: 0px;
+    padding: 2px;
+    color:black;
+    background-color: white;
+    position: relative;
+    width: 45%; 
+}
+.propertyImge{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.propertyImag{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}

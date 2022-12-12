@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind componenet;
+@tailwind utilities;
+/*background-image: url('./bg.jpg');*/
+body{
+  
+  background-size:cover;
+  background-position: center;
+  
+ 
+}
+
+

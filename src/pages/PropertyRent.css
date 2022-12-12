@@ -1,0 +1,31 @@
+.FirstDiv{
+    text-align: center;
+    background-color: green;
+   
+}
+.SecondDiv{
+    text-align:center;
+    background-color:blue
+}
+
+.FirstH1{
+    color: white;
+}
+
+.SecondH2{
+    color: white;
+}
+.ThirdParagraph{
+    font-size: 5vw;
+    color: white;
+}
+.Image{
+    position: center;
+    width: 100%;
+  height: auto;
+}
+@media only screen and (min-width: 600px) {
+    .image {
+      width: 25%;
+    }
+}

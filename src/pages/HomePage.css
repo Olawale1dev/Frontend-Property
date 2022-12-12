@@ -1,0 +1,29 @@
+* {box-sizing: border-box;}
+
+.Container{
+    padding:1px;
+     display: flex;
+}
+.RentDiv{
+    padding:10px; 
+    height:auto;
+     width:33.33%;
+      float:left;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.30) 0 11px 8px rgba(0,0,0,0.22);
+}
+@media (max-width: 600px) {
+    .RentDiv {
+      width: 100%;
+    }
+  }
+  @media (max-width: 600px) {
+    .Container {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+  .RentLabel{
+    background-color: rgb(14, 5, 5);
+    color: white;
+    text-align: center;
+  }
