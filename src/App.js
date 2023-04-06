@@ -1,4 +1,4 @@
-//import Header from './pages/Header';
+import Header from './pages/Header';
 import MyPro from './pages/MyPro';
 import MyRouter from './MyRouter';
 //import Footer from './pages/footer';
@@ -23,6 +23,10 @@ function App(){
     return(
       <div>
     <MyPro/> 
+    <Header/>
+    <form action='http://localhost:2020/logout'>
+      <button  type='submit' value="logout">logout</button>
+    </form>
     <MyRouter/>
        
       </div>

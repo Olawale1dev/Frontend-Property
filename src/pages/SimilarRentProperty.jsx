@@ -10,6 +10,7 @@ import Card from 'react-bootstrap/Card';
 import bedroom from './Assets/bedroom.jpg';
 import bathroom from './Assets/bathroom.jpg';
 import toilet from './Assets/toilet.jpg'; 
+import locationicon from './Assets/locationicon.png'; 
 
 
  
@@ -71,12 +72,16 @@ class SimilarRentProperty extends Component  {
                           <div class="property-third-lay">
                           
                               <div className= "propertyImage">
-                              <img variant="top" className="propertyImg" src= {property.url} alt="propertyPicture"/>
+                              <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.url}`} alt="propertyPicture"/>
                               </div>
                           <Card.Body>
                           <Card.Title >{property.title}</Card.Title>
-                          <p> {property.price}/Year</p>
-                          <Card.Text>   
+                          <p> {property.price}/{property.priceUnit}</p>
+                          <Card.Text> 
+                          <div className="Location">
+                            <img  className="LocationiconImage" src={locationicon} alt="locationicon" ></img>
+                            <Card.Title>{property.area}</Card.Title>  
+                          </div>   
 
                             <div className="icons">
                                     <div className="row">
@@ -91,11 +96,9 @@ class SimilarRentProperty extends Component  {
                                     
                                     </div>
                                 
-                                  </div >     
-                            <div class="Locatio">
-                                <p>State: {property.state}</p>
-                                <p>Area: {property.area}</p>  
-                            </div>
+                                  </div > 
+                                 
+                            
                               </Card.Text>
                             </Card.Body> 
                              

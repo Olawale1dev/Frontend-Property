@@ -148,7 +148,7 @@ class Furnished extends Component  {
     
     if (!DataisLoaded) return 
      <div>
-        <h1> Pleses wait some time.... </h1> 
+        <h1> Pleses wait for some time.... </h1> 
       </div> ;
 
     return ( 

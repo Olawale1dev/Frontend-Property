@@ -1,13 +1,13 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
+import {Button, IconButton, Toolbar } from '@mui/material';
 import  './Header.css';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import AppBar from '@mui/material/AppBar';
 import Stack from '@mui/material/Stack';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
+//import Toolbar from '@mui/material/Toolbar';
+//import IconButton from '@mui/material/IconButton';
 
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -33,6 +33,25 @@ const darkTheme = createTheme({
   },
 });
 
+const handleLogout = async () => {
+  let res = await
+  fetch("http://localhost:3000/login");
+  let resJson = await res.json();
+  //.then((res)=> res.json())
+  //.then((resJson) => {
+    console.log(resJson)
+  if(resJson.status ===200){
+    alert("You Have Logged Out Successfully")
+    setTimeout(function(){window.location.replace("http://localhost:3000");}, 2000)
+  }else{
+    alert("Not Successfull")
+  }
+//})
+}
+
+
+
+
 export default function Header() {
   const [anchorel, setAnchorel] = React.useState(null);
   const open = Boolean(anchorel);
@@ -43,14 +62,15 @@ export default function Header() {
     setAnchorel(null);
   };
 
-  
+ 
+ 
 
   return (
       
 
     <div>
       
-          <Button
+          <div
             id="fade-button"
             aria-controls={open ? 'fade-menu' : undefined}
             aria-haspopup="true"
@@ -66,7 +86,7 @@ export default function Header() {
               </ThemeProvider>
           </Stack>
            
-          </Button>
+          </div>
         
      
       <Menu
@@ -74,10 +94,10 @@ export default function Header() {
         menulistprops={{
           'aria-labelledby': 'fade-button',
         }}
-        anchorel={anchorel}
+        anchorEl={anchorel}
         open={open}
         onClose={handleClose}
-        TransitionComponent={Fade}
+        transitioncomponent={Fade}
       >
         <MenuItem onClick={handleClose}><a href="http://localhost:3000" className="Listheader">Home</a></MenuItem>
         <MenuItem onClick={handleClose}><a href="http://localhost:3000/ForRent" className="Listheader">For Rent</a></MenuItem>
@@ -87,6 +107,7 @@ export default function Header() {
         <MenuItem onClick={handleClose}><a href="http://localhost:3000/blogpost" className="Listheader">Post Blog</a></MenuItem>
         <MenuItem onClick={handleClose}><a href="http://localhost:3000/signup" className="Listheader">Sign up</a></MenuItem>
         <MenuItem onClick={handleClose}><a href="http://localhost:3000/login" className="Listheader">Login</a></MenuItem>
+        <MenuItem onClick={handleLogout} className="Listheader">Log out</MenuItem>
         <MenuItem onClick={handleClose}><a href="http://localhost:3000/login" className="Listheader">Blog</a></MenuItem>
        
         

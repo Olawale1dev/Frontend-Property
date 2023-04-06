@@ -16,6 +16,7 @@ import Search from './Search';
 import  './HomePage.css';
 import Similar from './SimilarRent';
 //import FeaturedSlider from './FeaturedSlider';
+import Card from 'react-bootstrap/Card';
 
 
 
@@ -23,24 +24,24 @@ export default function HomePage(){
 
     return(
         <div>
-                <Header/>
+                
                
                 
-                <h1 className="feature-property"> Featured Property</h1>
+                <Card.Title className="feature-property"> Featured Property</Card.Title>
                     <FeaturedProperty/>
                     
-                    <a href="http://localhost:3000/Search" className="clickmore" > Search Property</a> 
+                    
                     <div className="Container" >
                         <div  className="RentDiv" >
-                        <p className="RentLabel">For Rent</p>
+                        <Card.Title className="RentLabel">For Rent</Card.Title>
                         <PropertyRen/>
                         </div>
                         <div className="RentDiv" >
-                        <p className="RentLabel">For Sell</p>
+                        <Card.Title className="RentLabel">For Sell</Card.Title>
                         <PropertySel/>
                         </div>
                         <div className="RentDiv" >
-                        <p className="RentLabel">Short Let</p>
+                        <Card.Title className="RentLabel">Short Let</Card.Title>
                         <PropertyShortLet/>
                         </div><br></br>
 
@@ -48,15 +49,15 @@ export default function HomePage(){
                     </div>
                     <div className="Container">
                             <div className ="RentDiv">
-                                <p className="RentLabel">Furnished</p>
+                                <Card.Title className="RentLabel">Furnished</Card.Title>
                                 <PropertyFurnished/>    
                             </div>
                             <div className="RentDiv">
-                                <p className="RentLabel">Serviced</p>
+                                <Card.Title className="RentLabel">Serviced</Card.Title>
                                 <PropertyServiced/>
                             </div>
                             <div className="RentDiv">
-                                <p className="RentLabel">Newly Built</p>
+                                <Card.Title className="RentLabel">Newly Built</Card.Title>
                                 <PropertyNewlyBuilt/>
                             </div>
                              

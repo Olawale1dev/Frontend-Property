@@ -13,22 +13,19 @@ import '../pages/My.css'
 
 
 
- function Login() {
+ function LoginBad() {
     const [email, setEmail]=useState("")
     const [password, setPassword] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
-    const [user, setUser] = useState('')
 
     //const formData = new FormData(e.target);
     const onSubmit = async (e) => {
       e.preventDefault();
-      
+      //let res = await
       const formData = new FormData(e.target);
       //let res = await res.json();
-      //let user = await response.json();
-      let response = await 
-      fetch("http://localhost:2020/loginMe", {
+      fetch("http://localhost:2020/login", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -38,30 +35,20 @@ import '../pages/My.css'
         body: JSON.stringify({
           email: formData.get('email'),
           password: formData.get('password'),
-          
         }),
       })
       
-        //.then((res) => res.json())
-        //.then((resJson) => {
-          //const user = await response.json();
-        let user = await response.json();
-          // Update the frontend state with the user's information
-          setUser(user);
-        if(response.status === 200 ) {
+        .then((res) => res.json())
+        .then((resJson) => {
+          if(resJson.status === 200 ) {
             alert("Success !!!")
-            setTimeout(function(){window.location.replace("http://localhost:3000/profile");}, 2000)
-            
-            
-
-            // Update the frontend state with the user's information
-            //setUser(user);
-            // setTimeout(function(){window.location.replace("http://localhost:3000");}, 2000)
+            setTimeout(function(){window.location.replace("http://localhost:3000");}, 2000)
           } else {
             alert("Bad Credentials");
-            setTimeout(function(){window.location.replace("http://localhost:3001/login");}, 2000)
+            setTimeout(function(){window.location.replace("http://localhost:3000/login");}, 2000)
           }
-        
+        })
+        .catch((err) => err);
     }
 
    
@@ -105,6 +92,7 @@ import '../pages/My.css'
               autoComplete="off"
             >
                 <h1 style={{color:"blue"}}><u> Login </u></h1>
+                <p style={{color:"Red"}}>Bad Creandials. Please input Correct Details !!!</p>
               <TextField  type="email" label="Email" color="secondary" name="email"focused  
               value={email}
               onChange= {(e) => setEmail(e.target.value)}
@@ -138,6 +126,6 @@ import '../pages/My.css'
   );
     }
 
-    export default Login
+    export default LoginBad
   
    

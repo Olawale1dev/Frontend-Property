@@ -12,6 +12,16 @@ import Card from 'react-bootstrap/Card';
 import {useParams} from 'react-router-dom';
 import SimilarRent  from "./SimilarRent";
 import SimilarRentProperty from "./SimilarRentProperty";
+import {FacebookShareCount, 
+  FacebookIcon,
+  FacebookShareButton,
+  WhatsappShareButton, 
+  WhatsappIcon,TwitterShareButton, TwitterIcon,
+  LinkedinShareButton,LinkedinIcon,
+  TelegramShareButton,TelegramIcon,
+  InstapaperShareButton,InstapaperIcon, 
+  TumblrIcon,TumblrShareButton
+  } from "react-share";
 //import axios from 'axios'
 //import useFetch from './UseFetch';
 //import ForRent from './ForRent';
@@ -57,6 +67,7 @@ class SimilarProperty extends Component  {
   //const {items: property}cons = useFetch("http://localhost:2020/property/one/"+ id) 
   render() {
     const {items} = this.state
+    const shareUrl= window.location.href
   // ComponentDidMount is used to
   // execute the code 
  
@@ -112,17 +123,37 @@ class SimilarProperty extends Component  {
                      
                       <br></br>
                       
-                      
+                      <FacebookShareButton url={shareUrl} description={property.title} >
+                        <FacebookIcon size={40} round={true} />
+                      </FacebookShareButton>
+                      <WhatsappShareButton url={shareUrl} description={property.title}>
+                        <WhatsappIcon size={40} round={true} />
+                      </WhatsappShareButton>
+                      <TwitterShareButton url={shareUrl} description={property.title}>
+                        <TwitterIcon size={40} round={true} />
+                      </TwitterShareButton>
+                      <LinkedinShareButton url={shareUrl} description={property.title}>
+                        <LinkedinIcon size={40} round={true} />
+                      </LinkedinShareButton>
+                      <TelegramShareButton url={shareUrl} description={property.title}>
+                        <TelegramIcon size={40} round={true} />
+                      </TelegramShareButton>
+                      <InstapaperShareButton url={shareUrl} description={property.title}>
+                        <InstapaperIcon size={40} round={true} />
+                      </InstapaperShareButton> 
+                      <TumblrShareButton url={shareUrl} description={property.title}>
+                        <TumblrIcon size={40} round={true} />
+                      </TumblrShareButton> 
                         
                         
                         <div class="property-third-layer" className="innerProperty">
                         
                             <div className= "propertyImage">
-                            <img variant="top" className="propertyImg" src={property.url}alt="propertyPicture"/>
+                            <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.url}`}alt="propertyPicture"/>
                             </div>
                         <Card.Body >
                         <Card.Title>{property.title}</Card.Title>
-                        <p> {property.price}/Year</p>
+                        <p> {property.price}/{property.priceUnit}</p>
                         <Card.Text>
                           
                               <div className="icons">
@@ -142,13 +173,13 @@ class SimilarProperty extends Component  {
                                
                                 <div className= "propertyImage">
                                     other Images
-                                  <img variant="top" className="propertyImg" src= {property.image1} alt="propertyPicture"/>
+                                  <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.image1}`} alt="propertyPicture"/>
                                   </div>
                                   <div className= "propertyImage">
-                                  <img variant="top" className="propertyImg" src= {property.image2} alt="propertyPicture"/>
+                                  <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.image2}`} alt="propertyPicture"/>
                                   </div>
                                   <div className= "propertyImage">
-                                  <img variant="top" className="propertyImg" src= {property.image3} alt="propertyPicture"/>
+                                  <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.image3}`} alt="propertyPicture"/>
                                   </div>
                                     <div className="detailSection">
                                       <p >Size: {property.size}</p>

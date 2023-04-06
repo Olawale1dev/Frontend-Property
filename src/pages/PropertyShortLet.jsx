@@ -7,6 +7,10 @@ import {Link} from 'react-router-dom';
 //import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 //import  './PropertyRent.css';
+import bedroom from './Assets/bedroom.jpg';
+import bathroom from './Assets/bathroom.jpg';
+import toilet from './Assets/toilet.jpg'; 
+import locationicon from './Assets/locationicon.png'; 
 
 
  
@@ -52,29 +56,41 @@ class PropertyShortLet extends Component  {
   render() {
     const { DataisLoaded, items } = this.state;
     if (!DataisLoaded) return <div>
-        <h1> Pleses wait some time.... </h1> </div> ;
+        <h1> Pleses wait for some time.... </h1> </div> ;
 
     return ( 
-       <div  class="property-second-lay">
+       <div  className="property-second-lay">
             <picture >
-            <div ref="{property.id}"></div>{
+            <div useref="{property.id}"></div>{
                       items.map((property) =>(
                       <div key={property.id} >
                         <Link to={property.link} className="LinkTo">
-                          <div class="property-third-lay">
+                          <div className="">
                           
                               <div className= "propertyImage">
                               <img variant="top" className="propertyImg" src= {property.url}  alt="propertyPicture"/>
                               </div>
                           <Card.Body>
                           <Card.Title >{property.title}</Card.Title>
-                          <p> {property.price}/Year</p>
-                          <Card.Text>   
-                                 
-                            <div class="Locatio">
-                                <p>State: {property.state}</p>
-                                <p>Area: {property.area}</p>  
-                            </div>
+                          <Card.Title> {property.price}/{property.priceUnit}</Card.Title>
+                          <Card.Text>
+                          <div className="Location">
+                            <img  className="LocationiconImage" src={locationicon} alt="locationicon" ></img>
+                                <Card.Title>{property.area}</Card.Title>  
+                          </div>    
+                          <div className="icons">
+                                    <div className="row">
+                                        <div className="column">
+                                        <img  className="iconImage" src={bedroom} alt="bedroom" ></img>
+                                        <div className="ParaNo">{property.bedroomNo} bedrooms</div>
+                                        <img className="iconImage"  src={bathroom} alt="bedroom" ></img>
+                                        <div className="ParaNo"> {property.bathroomNo} bathrooms</div>
+                                        <img className="iconImage" src={toilet} alt="bedroom" ></img>
+                                        <div className="ParaNo"> {property.toiletNo} toilets</div>
+                                        </div>
+                                    </div>
+                          </div >   
+                          
                               </Card.Text>
                             </Card.Body> 
                              

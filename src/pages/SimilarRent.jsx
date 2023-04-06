@@ -9,7 +9,8 @@ import Card from 'react-bootstrap/Card';
 //import  './PropertyRent.css';
 import bedroom from './Assets/bedroom.jpg';
 import bathroom from './Assets/bathroom.jpg';
-import toilet from './Assets/toilet.jpg'; 
+import toilet from './Assets/toilet.jpg';
+import locationicon from './Assets/locationicon.png';  
 
 
  
@@ -59,43 +60,43 @@ class SimilarRent extends Component  {
 
     return ( 
      
-      <div  class="property-second-lay">
-            
-                    <div ref="{property.id}"></div>{
+      <div  className="property-second-lay">
+            <h1>Property For Rent</h1>
+                    <div useref="{property.id}"></div>{
                       items.map((property) =>(
                       <div key={property.id} >
                         <Link to={property.link} className="LinkTo">
                         
                           
                         
-                          <div class="property-third-lay">
+                          <div className="property-third-lay">
                           
                               <div className= "propertyImage">
-                              <img variant="top" className="propertyImg" src= {property.url} alt="propertyPicture"/>
+                              <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.url}`} alt="propertyPicture"/>
                               </div>
                           <Card.Body>
                           <Card.Title >{property.title}</Card.Title>
-                          <p> {property.price}/Year</p>
+                          <div> {property.price}/{property.priceUnit}</div>
                           <Card.Text>   
-
+                          <div className="Location">
+                            <img  className="LocationiconImage" src={locationicon} alt="locationicon" ></img>
+                                <Card.Title>{property.area}</Card.Title>  
+                          </div> 
                             <div className="icons">
                                     <div className="row">
                                         <div className="column">
                                         <img  className="iconImage" src={bedroom} alt="bedroom" ></img>
-                                        <p className="ParaNo">{property.bedroomNo} bedrooms</p>
+                                        <div className="ParaNo">{property.bedroomNo} bedrooms</div>
                                         <img className="iconImage"  src={bathroom} alt="bedroom" ></img>
-                                        <p className="ParaNo"> {property.bathroomNo} bathrooms</p>
+                                        <div className="ParaNo"> {property.bathroomNo} bathrooms</div>
                                         <img className="iconImage" src={toilet} alt="bedroom" ></img>
-                                        <p className="ParaNo"> {property.toiletNo} toilets</p>
+                                        <div className="ParaNo"> {property.toiletNo} toilets</div>
                                         </div>
                                     
                                     </div>
                                 
                                   </div >     
-                            <div class="Locatio">
-                                <p>State: {property.state}</p>
-                                <p>Area: {property.area}</p>  
-                            </div>
+                            
                               </Card.Text>
                             </Card.Body> 
                              

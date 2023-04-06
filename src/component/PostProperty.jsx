@@ -40,12 +40,15 @@ export default function MyPro(){
     const [subType , setSubType]= useState('')
     const [size , setSize]= useState('')
     const [youtubeLink, setYoutubeLink] = useState('')
+    const [priceUnit, setPriceUnit] = useState('')
     
 
 
     
    
-
+    const handlePriceunit = (event) => {
+      setPriceUnit(event.target.value)
+    };
     const handlePurpose = (event) => {
       setPurpose(event.target.value);
     };
@@ -95,7 +98,7 @@ export default function MyPro(){
              let newpost = new FormData(document.getElementById("property-post-form"));
              console.log(newpost.getAll)
             let res = await
-             fetch("http://localhost:2020/property/post", { method : "POST",   headers: {"Accept": "application/json" }, 
+             fetch("http://localhost:2020/property/post", { method : "POST",   headers: {"Accept": "application/json", "Access-Control-Allow-Origin" : "http://localhost:2020/property/post" }, 
              body: newpost
            });
            let resJson = await res.json();
@@ -103,7 +106,7 @@ export default function MyPro(){
            if(res.status === 200 && typeof resJson.id == 'number' && resJson.id > 0 ){
              alert("Post created successfully");
              //setMessage("Post created successfully");
-             setTimeout(function(){window.location.replace("http://localhost:3000");}, 2000)
+            
              
            }else{
              alert("error creating post")
@@ -122,7 +125,7 @@ export default function MyPro(){
 
     return(
       <div>
-        <Header/>
+        
       
         <div className="PostPropertyBackground">
             
@@ -221,6 +224,7 @@ export default function MyPro(){
                         <MenuItem   value="Meeting-Room" className="OptionSubType">Meeting Room</MenuItem>
                         <MenuItem   value="Private Office" className="OptionSubType">Private Office</MenuItem>
                         <MenuItem   value="Workstation" className="OptionSubType">Workstation</MenuItem>
+                        <MenuItem   value="House" className="OptionSubType">House</MenuItem>
                     </Select>
                     </FormControl>
 
@@ -365,6 +369,29 @@ export default function MyPro(){
                 
                 required placeholder="e.g: 30,000,000"/><br></br>
 
+              <FormControl sx={{ m: 1, minWidth: 80 }}>
+                  <InputLabel id="demo-simple-select-autowidth-label">Price Unit</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-autowidth-label"
+                    id="demo-simple-select-autowidth"
+                    className="OptionPriceUnit"
+                    autoWidth
+                    label="Sub type Of Property"
+                    name="priceUnit" focused 
+                    value={priceUnit}
+                    onChange= {handlePriceunit}color="secondary">
+                        <MenuItem value="">
+                        <em>None</em>
+                        </MenuItem>
+                        <MenuItem   value="Year" className="OptionPriceUnit">Per-Year</MenuItem>
+                        <MenuItem   value="Month" className="OptionPriceUnit">Per-Month</MenuItem>
+                        <MenuItem   value="Week" className="OptionPriceUnit">Per-Week</MenuItem>
+                        <MenuItem   value="Day" className="OptionPriceUnit">Per-Day</MenuItem>
+                        <MenuItem   value="Hour" className="OptionPriceUnit">Per-Hour</MenuItem>
+                        <MenuItem   value="Sqm" className="OptionPriceUnit">Per-Sqm</MenuItem>
+                    </Select>
+                    </FormControl>
+
                 <p>Description</p>
                     <TextareaAutosize type="text" label="description" color="secondary" name="description" focused 
                     value={description}
@@ -387,22 +414,22 @@ export default function MyPro(){
 
                 <TextField type="file"   label="primary" color="secondary" name="url" focused  
                   value={url}
-                  onChange= {(e) => setUrl(e.target.value)} multiple
+                  onChange= {(e) => setUrl(e.target.value)} multiple="true"
                   /><br></br>
 
                 <TextField type="file"   label="image 1" color="secondary" name="image1" focused  
                   value={image1}
-                  onChange= {(e) => setImage1(e.target.value)} multiple
+                  onChange= {(e) => setImage1(e.target.value)} multiple="true"
                   /><br></br>
 
                 <TextField type="file"   label="image 2" color="secondary" name="image2" focused  
                   value={image2}
-                  onChange= {(e) => setImage2(e.target.value)} multiple
+                  onChange= {(e) => setImage2(e.target.value)} multiple="true"
                   /><br></br>
 
                 <TextField type="file"   label="image 3" color="secondary" name="image3" focused  
                   value={image3}
-                  onChange= {(e) => setImage3(e.target.value)} multiple
+                  onChange= {(e) => setImage3(e.target.value)} multiple="true"
                   /><br></br>
 
 

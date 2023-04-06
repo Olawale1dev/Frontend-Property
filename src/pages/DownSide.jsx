@@ -22,13 +22,13 @@ import Card from 'react-bootstrap/Card';
 
 export default function DownSide(){
 
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
+    const [anchorel, setAnchorel] = React.useState(null);
+    const open = Boolean(anchorel);
     const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
+      setAnchorel(event.currentTarget);
     };
     const handleClose = () => {
-      setAnchorEl(null);
+      setAnchorel(null);
     };
   
       return(
@@ -48,13 +48,11 @@ export default function DownSide(){
                         <a href="http://localhost:3000" className="logo">MyProperty.com.ng</a>
                         <div className="header-right"
                             id="fade-menu"
-                            MenuListProps={{
-                            'aria-labelledby': 'fade-button',
-                            }}
-                            anchorEl={anchorEl}
+                            
+                            anchorel={anchorel}
                             open={open}
                             onClose={handleClose}
-                            TransitionComponent={Fade}>
+                            transitioncomponent={Fade}>
                             <a className="" href="http://localhost:3000/">Home</a>
                             <a href="http://localhost:3000/ForRent">For Rent</a>
                             <a href="http://localhost:3000/ForSell">For Sell</a>
@@ -70,7 +68,7 @@ export default function DownSide(){
                         <div className="container-area">
                             <div className="row-pdb-100">
                                 <div className="col-md-2">
-                                    <div footer-text>
+                                    <div footer-text="true">
                                         <h3>Purpose</h3>
                                         <ul>
                                             <li><a href="#" className="ListItems">For Rent</a></li>
@@ -82,7 +80,7 @@ export default function DownSide(){
 
                                 </div>
                                 <div className="col-md-2">
-                                    <div footer-text>
+                                    <div footer-text="true">
                                         <h3>Status</h3>
                                         <ul>
                                             <li><a href="#" className="ListItems">Furnished</a></li>
@@ -94,7 +92,7 @@ export default function DownSide(){
 
                                 </div>
                                 <div className="col-md-2">
-                                    <div footer-text>
+                                    <div footer-text="true">
                                         <h3>Type</h3>
                                         <ul>
                                             <li><a href="#" className="ListItems">Boys Quarters</a></li>
@@ -108,7 +106,7 @@ export default function DownSide(){
 
                                 </div>
                                 <div className="col-md-2">
-                                    <div footer-text>
+                                    <div footer-text="true">
                                         <h3 className="Itemtitle">Popula States</h3>
                                         <ul >
                                             <li ><a href="#" className="ListItems">Lagos</a></li>
@@ -126,7 +124,7 @@ export default function DownSide(){
                         
                     </div>
                     <div className="BuiltBy">
-                    <p> Built By Tiamiyu Sodiq Olawale |MyProperty.com.ng  &copy; 2022</p>
+                    <Card.Title> Built By Tiamiyu Sodiq Olawale |MyProperty.com.ng  &copy; 2022</Card.Title>
                     </div>
                     
           </div>

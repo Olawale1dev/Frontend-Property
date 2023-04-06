@@ -1,7 +1,7 @@
 import * as React from "react";
 import   './My.css';
 import Button from '@mui/material/Button';
-import Fade from '@mui/material/Fade';
+//import Fade from '@mui/material/Fade';
 import  './Header.css';
 
 //import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -30,7 +30,7 @@ export default function MyPro(){
       
        <div className="header">
                     <div>
-                        <Button
+                        <div
                         id="fade-button"
                         aria-controls={open ? 'fade-menu' : undefined}
                         aria-haspopup="true"
@@ -39,17 +39,18 @@ export default function MyPro(){
                         >
                         
                         
-                        </Button>
+                        </div>
                         <a href="http://localhost:3000" className="logo">MyProperty.com.ng</a>
                         <div className="header-right"
                             id="fade-menu"
-                            MenuListProps={{
-                            'aria-labelledby': 'fade-button',
-                            }}
+                            //menuListProps={{
+                              //'aria-labelledby': 'fade-button',
+                              //}}
                             anchorel={anchorel}
                             open={open}
                             onClose={handleClose}
-                            TransitionComponent={Fade}>
+                            //TransitionComponent={Fade}
+                            >
                             <a className="" href="http://localhost:3000/">Home</a>
                             <a href="http://localhost:3000/Blog">Blog</a>
                             <a href="http://localhost:3000/Contact">Contact</a>

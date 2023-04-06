@@ -9,8 +9,18 @@ import toilet from './Assets/toilet.jpg';
 import DownSide from './DownSide';
 //import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {useParams} from 'react-router-dom';
+import {useParams, useSearchParams} from 'react-router-dom';
 import SimilarRent from "./SimilarRent";
+import {FacebookShareCount, 
+  FacebookIcon,
+  FacebookShareButton,
+  WhatsappShareButton, 
+  WhatsappIcon,TwitterShareButton, TwitterIcon,
+  LinkedinShareButton,LinkedinIcon,
+  TelegramShareButton,TelegramIcon,
+  InstapaperShareButton,InstapaperIcon, 
+  TumblrIcon,TumblrShareButton
+  } from "react-share";
 //import axios from 'axios'
 //import useFetch from './UseFetch';
 //import ForRent from './ForRent';
@@ -56,10 +66,12 @@ class OneProperty extends Component  {
   //const {items: property}cons = useFetch("http://localhost:2020/property/one/"+ id) 
   render() {
     const {items} = this.state
+    const shareUrl= window.location.href
+  
+    
   // ComponentDidMount is used to
   // execute the code 
- 
-
+  
  
 
 
@@ -72,10 +84,10 @@ class OneProperty extends Component  {
     
 
     return ( 
-      <div class="property-first-layer">
+      <div className="property-first-layer">
         
         
-      <div class="headlink">
+      <div className="headlink">
       <a className="" href="http://localhost:3000/">Home</a>|
           <a href="http://localhost:3000/ForRent">For Rent</a>|
           <a href="http://localhost:3000/ForSell">For Sell</a>|
@@ -86,8 +98,8 @@ class OneProperty extends Component  {
           <a href="http://localhost:3000/Blog">Blog</a>|
           
       </div>
-
-      <div class="columnside">    
+          
+      <div className="columnside">    
         <ol>
                  <h3> Safety Tips </h3>
           <li>1. Do not make any upfront payment as inspection fee before seeing the property or seeing the agent you contacted physically.</li>
@@ -98,41 +110,63 @@ class OneProperty extends Component  {
         </ol>
 
       </div>
+      
+     
       <div className="ContainerSection">
-          
+      
       
       <div className="PropertySection">
-        <div  class="">
-                    
-                  <div ref="{property.id}"></div>{
+        <div  >
+                      
+                  <div useref="{property.id}"></div>{
                    items.map((property) =>(
                     <div key={property.id} 
                      >
                      
                       <br></br>
-                      
+                      <FacebookShareButton url={shareUrl} description={property.title} >
+                        <FacebookIcon size={40} round={true} />
+                      </FacebookShareButton>
+                      <WhatsappShareButton url={shareUrl} description={property.title}>
+                        <WhatsappIcon size={40} round={true} />
+                      </WhatsappShareButton>
+                      <TwitterShareButton url={shareUrl} description={property.title}>
+                        <TwitterIcon size={40} round={true} />
+                      </TwitterShareButton>
+                      <LinkedinShareButton url={shareUrl} description={property.title}>
+                        <LinkedinIcon size={40} round={true} />
+                      </LinkedinShareButton>
+                      <TelegramShareButton url={shareUrl} description={property.title}>
+                        <TelegramIcon size={40} round={true} />
+                      </TelegramShareButton>
+                      <InstapaperShareButton url={shareUrl} description={property.title}>
+                        <InstapaperIcon size={40} round={true} />
+                      </InstapaperShareButton> 
+                      <TumblrShareButton url={shareUrl} description={property.title}>
+                        <TumblrIcon size={40} round={true} />
+                      </TumblrShareButton> 
                       
                         
-                        
-                        <div class="property-third-layer" className="innerProperty">
+                        <div  className="innerProperty">
                         
                             <div className= "propertyImage">
-                            <img variant="top" className="propertyImg" src={property.url}alt="propertyPicture"/>
+                            <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.url}`} alt="propertyPicture"/>
+                            
                             </div>
                         <Card.Body >
                         <Card.Title>{property.title}</Card.Title>
-                        <p> {property.price}/Year</p>
+                        <div> {property.price}/{property.priceUnit}</div>
                         <Card.Text>
                           
                               <div className="icons">
                                   <div className="row">
                                       <div className="column">
                                       <img  className="iconImage" src={bedroom} alt="bedroom" ></img>
-                                      <p className="ParaNo">{property.bedroomNo} bedrooms</p>
+                                      <div className="ParaNo">{property.bedroomNo} bedrooms</div>
                                       <img className="iconImage"  src={bathroom} alt="bedroom" ></img>
-                                      <p className="ParaNo"> {property.bathroomNo} bathrooms</p>
+                                      <div className="ParaNo"> {property.bathroomNo} bathrooms</div>
                                       <img className="iconImage" src={toilet} alt="bedroom" ></img>
-                                      <p className="ParaNo"> {property.toiletNo} toilets</p>
+                                      <div className="ParaNo"> {property.toiletNo} toilets</div>
                                       </div>
                                   
                               </div>
@@ -141,23 +175,23 @@ class OneProperty extends Component  {
                                
                                 <div className= "propertyImage">
                                     other Images
-                                  <img variant="top" className="propertyImg" src= {property.image1} alt="propertyPicture"/>
+                                  <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.image1}`} alt="propertyPicture"/>
                                   </div>
                                   <div className= "propertyImage">
-                                  <img variant="top" className="propertyImg" src= {property.image2} alt="propertyPicture"/>
+                                  <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.image2}`} alt="propertyPicture"/>
                                   </div>
                                   <div className= "propertyImage">
-                                  <img variant="top" className="propertyImg" src= {property.image3} alt="propertyPicture"/>
+                                  <img variant="top" className="propertyImg" src={`http://localhost:3000/${property.image3}`} alt="propertyPicture"/>
                                   </div>
                                     <div className="detailSection">
-                                      <p >Size: {property.size}</p>
-                                      <p>Purpose: {property.purpose}</p>
-                                      <p>Type Of Property: {property.type}</p>
-                                      <p>Sub Type Of Property: {property.subType}</p>
-                                      <p>Status: {property.status}</p>
+                                      <div >Size: {property.size}</div>
+                                      <div>Purpose: {property.purpose}</div>
+                                      <div>Type Of Property: {property.type}</div>
+                                      <div>Sub Type Of Property: {property.subType}</div>
+                                      <div>Status: {property.status}</div>
                                     </div>
                                 
-                                <div class="columnside">    
+                                <div className="columnside">    
                                   <ol>
                                           <h3> Safety Tips </h3>
                                     <li>1. Do not make any upfront payment as inspection fee before seeing the property or seeing the agent you contacted physically.</li>
@@ -168,30 +202,30 @@ class OneProperty extends Component  {
                                   </ol>
 
                                 </div>
-                                <div class=" WhatsApp">
+                                <div className=" WhatsApp">
                                 <a
                                   href={`https://wa.me/${property.agentNumber}`}
                                     
                                     
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                  ><p className="whatslink">WhatsApp:{property.agentNumber}</p>
-                                    <i class="fa fa-whatsapp whatsapp-icon"></i>
+                                  ><div className="whatslink">WhatsApp:{property.agentNumber}</div>
+                                    
                                   </a>
                                 
                                 </div>
-                                <div class="Location">
-                                  <p>State: {property.state}</p>
-                                  <p>Locality: {property.locality}</p>
-                                  <p>Area: {property.area}</p>
-                                  <p>Street/Estate/Neighbourhood: {property.street}</p>
+                                <div className="Location">
+                                  <div>State: {property.state}</div>
+                                  <div>Locality: {property.locality}</div>
+                                  <div>Area: {property.area}</div>
+                                  <div>Street/Estate/Neighbourhood: {property.street}</div>
                                   </div>
-                                  <p className="Description"> Description: {property.description}</p>
-                                  <div class="YoutubeDiv">
-                                  <p>Click detail to check youtube video</p> 
+                                  <div className="Description"> Description: {property.description}</div>
+                                  <div className="YoutubeDiv">
+                                   
                                   
                                   <iframe id="YoutubeDiv" className="myclass" width="420" height="315"
-                                      src={`https://www.youtube.com/embed/${property.youtubeLink}`}  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                      src={`https://www.youtube.com/embed/${property.youtubeLink}`}  title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen>
                                       youtubeLink: property.youtubeLink</iframe>
                                   
                                      
@@ -218,10 +252,11 @@ class OneProperty extends Component  {
       
         </div>
         <div className="AdvertSection">
-          <p>Advertise with us</p>
+          <div>Advertise with us</div>
         </div>
       </div>
       <br></br>
+      
       <SimilarRent/>
       <br></br>
       

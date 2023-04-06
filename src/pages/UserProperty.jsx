@@ -29,7 +29,7 @@ import {Link} from 'react-router-dom';
 
 
 
-class ForRent extends Component  {
+class UserProperty extends Component  {
 
     
   
@@ -368,7 +368,7 @@ class ForRent extends Component  {
     
     if (!DataisLoaded) return 
      <div>
-        <h1> Pleses wait for some time.... </h1> 
+        <h1> Pleses wait some time.... </h1> 
       </div> ;
       if (items == null) return 
       <div>
@@ -593,7 +593,7 @@ class ForRent extends Component  {
        
 }  
 
-export default ForRent 
+export default UserProperty 
     
 
 

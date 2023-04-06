@@ -1,6 +1,8 @@
 import React from "react";
 import Login from './component/Login';
+import LoginBad from './component/LoginBad';
 import Signup from './component/Signup';
+
 import HomePage from "./pages/HomePage";
 import PostProperty from './component/PostProperty';
 import BlogPost from './component/BlogPost'
@@ -26,6 +28,10 @@ import {
 import OneProperty from "./pages/OneProperty";
 import SimilarProperty from "./pages/SimilarProperty";
 import NextSimilarProperty from "./pages/NextSimilarProperty";
+import UserProfile from './component/UserProfile';
+//import SearchForm from './pages/SearchForm';
+import UserProperty from "./pages/UserProperty";
+import SearchForm from "./pages/SearchForm";
 
 
 
@@ -37,8 +43,11 @@ import NextSimilarProperty from "./pages/NextSimilarProperty";
         <Routes>
           <Route path="/" exact element={<HomePage/>} />
           <Route path="/Login" exact element={<Login/>} />
+          <Route path="/LoginBad" exact element={<LoginBad/>}/>
           <Route path="/Signup" exact element={<Signup/>} />
           <Route path="/PostProperty" exact element={<PostProperty/>} />
+          <Route path="/profile" exact element={<UserProfile/>} />
+          <Route path="/userProperty" exact element={<SearchForm/>} />
           <Route path="/BlogPost" exact element={<BlogPost/>} />
           <Route path="/ForRent"  element={<ForRent/>} />
           <Route path="/ForSell" exact element={<ForSell/>} />
@@ -53,7 +62,7 @@ import NextSimilarProperty from "./pages/NextSimilarProperty";
           <Route path="/forgotPassword" exact element={<ForgetPasswordEmail/>} />
           <Route path="/ResetPassword" exact element={<ResetPassword/>} />
           <Route path="/Search" exact element ={<Search/>}/>
-          <Route path="/Property/:id/:title" exact element={<OneProperty/>}/>
+          <Route exact path="/Property/:id/:title"  element={<OneProperty/>}/>
           <Route path="/Properties/:id/:title" exact element={<SimilarProperty/>}/>
           <Route path="/property/:id/:title" exact element={<NextSimilarProperty/>}/>
 

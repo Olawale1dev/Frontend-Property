@@ -6,6 +6,8 @@ import './Slider.css'
 import {Link} from 'react-router-dom';
 //import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import locationicon from './Assets/locationicon.png'; 
+import './My.css';
 
 
 
@@ -55,25 +57,23 @@ class SliderNewlyBuilt extends Component  {
         <h1> Pleses wait some time.... </h1> </div> ;
 
     return ( 
-       <div  class="sliderNewlyBuilt-second-lay">
+       <div  className="sliderNewlyBuilt-second-lay">
             
-                    <div ref="{property.id}"></div>{
+                    <div useref="{property.id}"></div>{
                       items.map((property) =>(
                       <div key={property.id} >
                         <Link to={property.link} className="LinkTo">
-                          <div class="slider-third-lay">
+                          <div className="slider-third-lay">
                           
                               <div className= "propertyImag">
                               <img variant="top" className="propertyImge" src= {property.url} alt="propertyPicture"/>
                                 <Card.Title className="slider-shortDetail">{property.title}</Card.Title>
-                                <p className="slider-shortDetail"> {property.price}/Year</p>
+                                <Card.Title className="slider-shortDetail"> {property.price}/{property.priceUnit}</Card.Title>
+                                <Card.Title>{property.area}</Card.Title>
                               </div>
                                 <Card.Body>
                                   <Card.Text>   
-                                 
-                            <div class="slider-Locatio">
-                                <p>State: {property.state}|Area: {property.area}</p> 
-                            </div> 
+                         
                               </Card.Text>
                             </Card.Body> 
                              

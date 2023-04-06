@@ -28,14 +28,51 @@ export default function MyPro(){
     const [zip, setZip] = useState('')
     const [password, setPassword] = useState('')
     const [genderTitle, setGenderTitle] = useState('')
-    const [signUpAs, setSignUpAs] = useState('')
+    const [roles, setRoles] = useState('')
+    const [locality, setLocality] = useState('')
+    const [message, setMessage] = useState('')
 
     const handleChange = (event) => {
-      setSignUpAs(event.target.value);
+      setRoles(event.target.value);
     };
 
     
-   
+    const handleClick= async (e)=>{
+      e.preventDefault()
+     // const blog={title, tagName, description, publisher, url}
+      //console.log(blog)
+      try{
+       //let post = {"firstName": firstName, "lastName": lastName, "email": email, "signUpAs":signUpAs, "state": state, "city": city, "locality": locality, "genderTitle":genderTitle,"password": password };
+       let newpost = new FormData(document.getElementById("user-post-form"));
+       //let convert= await newpost.Json();
+      // console.log(newpost.getAll);
+      let res = await
+       fetch("http://localhost:2020/api/v1/registration", { method : "POST", object:"User",  headers: {"Accept": "Application/json" }, 
+       body: newpost
+
+     });
+     let resJson = await res.json();
+     console.log(resJson);
+     if(   resJson.user !== null && typeof resJson.id === 'number' && resJson.id > 0 ){
+       alert("Account created successfully");
+       //setMessage("Post created successfully");
+       setTimeout(function(){window.location.replace("http://localhost:3000/login");}, 2000)
+       
+     }else if(resJson.message ===  "email already taken"){
+       alert( resJson.message )
+       //setTimeout(function(){window.location.replace("http://localhost:3000/signup");}, 2000)
+     }
+     else if(resJson.message === '406 NOT_ACCEPTABLE' ){
+      alert("Invalid Email Address. Please Input a Valid Email Address.")
+      //setTimeout(function(){window.location.replace("http://localhost:3000/signup");}, 2000)
+    }else if(resJson.message === '411 LENGTH_REQUIRED' ){
+      alert("Password must contain at least one digit, one upper case letter, one lower case letter and one special symbol (“@#$%”)")
+      //setTimeout(function(){window.location.replace("http://localhost:3000/signup");}, 2000)
+    }
+   }catch (err){
+     console.log(err);
+   }
+   };
     
     
     
@@ -45,19 +82,19 @@ export default function MyPro(){
     return(
       
         <div>
-          <Header/>
+         
             <div className="PostPropertyBackground">
             
               <Container  className="min-h-screen flex flex-col text-black ">
               
               <Box 
-              action="http://localhost:2020/api/v1/registration" object="User" method="POST"
-                component="form" encType="multipart/form-data"
+              //action="http://localhost:2020/api/v1/registration" object="User" method="POST"
+                component="form" encType="multipart/form-data" 
                 sx={{
                   '& > :not(style)': { m: 1, width: '25ch' },
                 }}
                 noValidate
-                autoComplete="off"
+                autoComplete="off" id="user-post-form"
               >
                   Already Have an Account ?
                 <Button href="http://localhost:3000/login"  style={{background:"blue", color:"white", width:"100px", height:"auto", padding:"5px", size:"20px"}}> Login</Button> 
@@ -86,6 +123,12 @@ export default function MyPro(){
                 
                 required /><br></br>
 
+                <TextField type="text" label="locality" color="secondary" name="locality" focused 
+                value={locality}
+                onChange= {(e) => setLocality(e.target.value)}
+                
+                required/><br></br>
+
                 <TextField type="text" label="State" color="secondary" name="state" focused 
                 value={state}
                 onChange= {(e) => setState(e.target.value)}
@@ -111,25 +154,25 @@ export default function MyPro(){
                     className="OptionSignUpAs"
                     autoWidth
                     label="SignUp As"
-                    name="signUpAs" focused 
-                    value={signUpAs}
+                    name="role" focused 
+                    value={roles}
                     onChange= {handleChange}color="secondary">
                         <MenuItem value="">
                         <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10} className="OptionSignUpAs">User</MenuItem>
-                        <MenuItem value={11} className="OptionSignUpAs">Agent</MenuItem>
-                        <MenuItem value={12}className="OptionSignUpAs">Landlord</MenuItem>
+                        <MenuItem value="USER" className="OptionSignUpAs">User</MenuItem>
+                        <MenuItem value="AGENT" className="OptionSignUpAs">Agent</MenuItem>
+                        <MenuItem value="ADMIN"className="OptionSignUpAs">Landlord</MenuItem>
                     </Select>
                     </FormControl>
                     <br></br>
-
+                    <p style={{"color":"blue"}}>Password must contain at least one digit, one upper case letter, one lower case letter and one special symbol (“@#$%”)</p>
                   <TextField type="password" label="Password" color="secondary" name="password" focused 
                 value={password}
                 onChange= {(e) => setPassword(e.target.value)}
                 
                 required /><br></br>
-                <Button style={{background:"blue", color:"white", width:"100px", height:"auto", padding:"5px", size:"20px"}}type="submit">SAVE</Button>
+                <Button style={{background:"blue", color:"white", width:"100px", height:"auto", padding:"5px", size:"20px"}}type="submit" onClick={handleClick}>Submit</Button>
                 </Box>
                 
               </Container>
